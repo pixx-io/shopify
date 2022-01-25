@@ -1,0 +1,203 @@
+/* GLOBAL STYLES */
+
+html { min-height: 380px; }
+body { overflow: auto !important; }
+
+:root {
+  --sideMargin: 3.2rem;
+}
+@media screen and (min-width: 1025px) {
+  .pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container li {
+    max-width: 320px;
+  }
+  .pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure .pixxioSquare {
+    min-width: 180px !important;
+    height: 180px !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container li {
+    max-width: 230px;
+  }
+  .pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure .pixxioSquare {
+    min-width: 120px !important;
+    height: 120px !important;
+  }
+}
+@media screen and (max-width: 743px) {
+  :root {
+    --sideMargin: 2rem;
+  }
+}
+@media screen and (max-width: 489px) {
+  :root {
+    --sideMargin: 1.6rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup p,
+  .pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup > span {
+    display: none;
+  }
+  .pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup {
+    justify-content: center;
+  }
+}
+
+
+/* UTIL */
+
+.user-select-none { user-select: none; }
+
+.position-fixed { position: fixed; }
+
+.flex-1 { flex: 1; }
+.flex { display: flex; }
+.flex-column { flex-direction: column; }
+.flex-center { align-items: center; }
+
+.border-bottom { border-bottom: 1px solid var(--p-divider); }
+.border-none-last-item:last-child { border: none; }
+.border-radius-6 { border-radius: 6px; }
+
+.truncate { overflow: hidden; text-overflow: ellipsis; }
+
+.blur { backdrop-filter: blur(3px); }
+
+.icon-color { fill: var(--p-icon); }
+.icon-color-white { fill: #cccccc; }
+
+.hover-icon,
+.hover-icon-white {
+  cursor: pointer;
+}
+.hover-icon:hover { fill: var(--p-icon-hovered); }
+.hover-icon-white:hover { fill: white; }
+
+
+/* PIXXIO JSDK LAYOUT */
+
+#__next,
+#__next > div,
+.appContainer,
+.pixxioJsdkContainer,
+.pixxioJsdkContainer main,
+.pixxioJsdkContainer .container,
+.pixxioJsdkContainer .container header,
+.pixxioJsdkContainer .container header .searchField,
+.pixxioJsdkContainer .container header .searchField .field,
+.pixxioJsdkContainer .container header .searchField .field label,
+.pixxioJsdkContainer .container .pixxioSectionLogin,
+.pixxioJsdkContainer .container .pixxioSectionLogin .login,
+.pixxioJsdkContainer .container .pixxioSectionLogin .login .field,
+.pixxioJsdkContainer .container .pixxioSectionLogin .login .field label,
+.pixxioJsdkContainer .container .pixxioSectionFiles,
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles,
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div,
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup,
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup .downloadFormats,
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup .downloadFormats .field,
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup .downloadFormats .field label {
+  background-color: inherit !important;
+}
+
+#__next,
+#__next > div,
+.appContainer,
+.pixxioJsdkContainer,
+.pixxioJsdkContainer main,
+.pixxioJsdkContainer .container {
+  height: 100% !important;
+}
+.pixxioJsdkContainer main {
+  min-width: 280px;
+  padding: 0 !important;
+  font-family: unset !important;
+}
+.pixxioJsdkContainer .container,
+.pixxioJsdkContainer .container section.pixxioSectionFiles,
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles {
+  display: flex !important;
+}
+.pixxioJsdkContainer .container,
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles {
+  flex-direction: column;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles {
+  min-height: 0 !important;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles,
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles,
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container {
+  flex: 1;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container {
+  max-height: unset !important;
+}
+
+.pixxioJsdkContainer .container header {
+  margin: 24px 0 0 !important;
+}
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup {
+  padding: 18px 0 12px !important;
+}
+
+.pixxioJsdkContainer .container header,
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup,
+.pixxioJsdkContainer .container small {
+  padding-right: var(--sideMargin) !important;
+  padding-left: var(--sideMargin) !important;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container {
+  padding: 0 calc(var(--sideMargin) - 6px);
+  padding-top: 20px;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container ul {
+  justify-content: space-around;
+  width: fit-content;
+}
+
+.pixxioJsdkContainer .container header .header,
+.pixxioJsdkContainer .container header .close {
+  display: none !important;
+}
+
+.pixxioJsdkContainer .container small {
+  margin-bottom: 8px;
+}
+
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure,
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure .pixxioSquare {
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure .pixxioSquare > div > div {
+  padding: 0 6px !important;
+  font-size: 9px;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure {
+  padding: 4px;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure .pixxioSquare {
+  width: 100%;
+  background: none !important;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure .pixxioSquare img::selection {
+  background: transparent;
+}
+.pixxioJsdkContainer .container section.pixxioSectionFiles .pixxioFiles section.pixxioFiles__container figure figcaption {
+  width: unset;
+  text-align: center;
+  font-size: 12px !important;
+}
+
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup > button:not(:disabled) {
+  background-color: var(--p-action-primary) !important;
+}
+.pixxioJsdkContainer .container .pixxioSectionFiles .pixxioFiles > div .buttonGroup > button {
+  text-transform: unset !important;
+  font-size: unset !important;
+  font-weight: var(--p-button-font-weight) !important;
+  letter-spacing: unset !important;
+}

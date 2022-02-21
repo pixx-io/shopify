@@ -1,9 +1,9 @@
-import React from 'react';
-import { setLocale, getAvailableLocale } from './shared/translation';
-import MainPage from './main-page';
+import React from "react";
+import { setLocale, getAvailableLocale } from "../shared/translation";
+import MainPage from "./main-page";
 
 class Index extends React.Component {
-  state = { locale: '' };
+  state = { locale: "" };
 
   componentDidMount() {
     setLocale();

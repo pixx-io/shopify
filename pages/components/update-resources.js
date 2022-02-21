@@ -1,9 +1,9 @@
-import React from 'react';
-import gql from 'graphql-tag';
-import { Mutation } from 'react-apollo';
-import { ResourcePicker } from '@shopify/app-bridge-react';
-import SnackbarComponent, { snackbarAnimationTime } from './snackbar';
-import { tl } from '../shared/translation';
+import React from "react";
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
+import { ResourcePicker } from "@shopify/app-bridge-react";
+import SnackbarComponent, { snackbarAnimationTime } from "./snackbar";
+import { tl } from "../../shared/translation";
 
 const APPEND_IMAGES = gql`
   mutation productAppendImages($input: ProductAppendImagesInput!) {
@@ -37,25 +37,25 @@ class UpdateResourcesComponent extends React.Component {
 
   state = {
     isSnackbarOpen: false,
-    snackbarMessage: '',
-    hasError: false
+    snackbarMessage: "",
+    hasError: false,
   };
 
   getMutation() {
     switch (this.props.selectedExport) {
-      case 'Product':
+      case "Product":
         return APPEND_IMAGES;
-      case 'Collection':
+      case "Collection":
         return UPDATE_COLLECTIONS;
     }
   }
 
   onResourceSelection(resources, handleSubmit) {
     switch (this.props.selectedExport) {
-      case 'Product':
+      case "Product":
         this.updateProductsImages(resources, handleSubmit);
         break;
-      case 'Collection':
+      case "Collection":
         this.updateCollectionsImage(resources, handleSubmit);
         break;
     }
@@ -72,17 +72,29 @@ class UpdateResourcesComponent extends React.Component {
 
     const selectedImages = [];
     for (const selectedFile of selectedFiles) {
-      selectedImages.push({ altText: selectedFile.file.fileName, src: selectedFile.url });
+      selectedImages.push({
+        altText: selectedFile.file.fileName,
+        src: selectedFile.url,
+      });
     }
     for (const selection of resources.selection) {
       promise = promise
-        .then(() => handleSubmit({ variables: { input: { id: selection.id, images: selectedImages } } }))
+        .then(() =>
+          handleSubmit({
+            variables: { input: { id: selection.id, images: selectedImages } },
+          })
+        )
         .catch(() => this.delaySnackbarIfAlreadyOpen(this.openErrorSnackbar));
     }
 
     if (promise) {
       promise
-        .then(() => this.delaySnackbarIfAlreadyOpen(this.openFinishedSnackbar, selectedFiles))
+        .then(() =>
+          this.delaySnackbarIfAlreadyOpen(
+            this.openFinishedSnackbar,
+            selectedFiles
+          )
+        )
         .catch(() => this.delaySnackbarIfAlreadyOpen(this.openErrorSnackbar));
     }
   }
@@ -95,10 +107,17 @@ class UpdateResourcesComponent extends React.Component {
     let promise = new Promise((resolve) => resolve());
 
     const selectedFile = selectedFiles[0];
-    const selectedImage = { altText: selectedFile.file.fileName, src: selectedFile.url };
+    const selectedImage = {
+      altText: selectedFile.file.fileName,
+      src: selectedFile.url,
+    };
     for (const selection of resources.selection) {
       promise = promise
-        .then(() => handleSubmit({ variables: { input: { id: selection.id, image: selectedImage } } }))
+        .then(() =>
+          handleSubmit({
+            variables: { input: { id: selection.id, image: selectedImage } },
+          })
+        )
         .catch(() => this.delaySnackbarIfAlreadyOpen(this.openErrorSnackbar));
     }
 
@@ -120,18 +139,28 @@ class UpdateResourcesComponent extends React.Component {
   }
 
   openStartSnackbar(me, selectedFiles) {
-    const messageStart = selectedFiles.length > 1 ? tl('imagesUploading', [selectedFiles.length]) : tl('imageUploading');
+    const messageStart =
+      selectedFiles.length > 1
+        ? tl("imagesUploading", [selectedFiles.length])
+        : tl("imageUploading");
     me.setState({ isSnackbarOpen: true, snackbarMessage: messageStart });
   }
 
   openFinishedSnackbar(me, selectedFiles) {
-    const messageFinished = selectedFiles.length > 1 ? tl('imagesUploadFinished', [selectedFiles.length]) : tl('imageUploadFinished');
+    const messageFinished =
+      selectedFiles.length > 1
+        ? tl("imagesUploadFinished", [selectedFiles.length])
+        : tl("imageUploadFinished");
     me.setState({ isSnackbarOpen: true, snackbarMessage: messageFinished });
-  };
+  }
 
   openErrorSnackbar(me) {
-    const messageError = tl('uploadError');
-    me.setState({ hasError: true, isSnackbarOpen: true, snackbarMessage: messageError });
+    const messageError = tl("uploadError");
+    me.setState({
+      hasError: true,
+      isSnackbarOpen: true,
+      snackbarMessage: messageError,
+    });
   }
 
   close() {
@@ -153,7 +182,9 @@ class UpdateResourcesComponent extends React.Component {
                     showVariants={false}
                     open={this.props.isResourcePickerOpen}
                     onCancel={() => this.close()}
-                    onSelection={resources => this.onResourceSelection(resources, handleSubmit)}
+                    onSelection={(resources) =>
+                      this.onResourceSelection(resources, handleSubmit)
+                    }
                   />
                 );
               }
@@ -170,7 +201,7 @@ class UpdateResourcesComponent extends React.Component {
         <SnackbarComponent
           isOpen={this.state.isSnackbarOpen}
           message={this.state.snackbarMessage}
-          color={this.state.hasError ? '#EE6D7C' : ''}
+          color={this.state.hasError ? "#EE6D7C" : ""}
           onClose={() => this.setState({ isSnackbarOpen: false })}
         />
         {renderResourcePicker()}

@@ -66,16 +66,25 @@ app.prepare().then(async () => {
   const handleRequest = async (ctx, shop = false) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
-    console.log(shop);
-    if (shop) {
-      ctx.append(
-        "Content-Security-Policy",
-        `frame-ancestors ${shop || ""} https://admin.shopify.com`
-      );
-    }
-    console.log(ctx.header);
     ctx.res.statusCode = 200;
   };
+
+  const setClickJackingHeadersMiddleware = async (ctx, next) => {
+    const shop = ctx.query.shop;
+    try {
+      if (shop) {
+        ctx.set({
+          "Content-Security-Policy": `frame-ancestors https://${shop} https://admin.shopify.com;`,
+        });
+      }
+    } catch (err) {
+      console.log("Doesnt matter");
+    } finally {
+      return next();
+    }
+  };
+
+  router.use(setClickJackingHeadersMiddleware);
 
   router.post("/webhooks", async (ctx) => {
     try {

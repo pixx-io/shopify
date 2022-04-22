@@ -63,13 +63,15 @@ app.prepare().then(async () => {
     })
   );
 
-  const handleRequest = async (ctx) => {
+  const handleRequest = async (ctx, shop = false) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
-    ctx.set(
-      "Content-Security-Policy",
-      `frame-ancestors ${shop || ""} https://admin.shopify.com`
-    );
+    if (shop) {
+      ctx.set(
+        "Content-Security-Policy",
+        `frame-ancestors ${shop || ""} https://admin.shopify.com`
+      );
+    }
     ctx.res.statusCode = 200;
   };
 

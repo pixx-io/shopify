@@ -67,7 +67,7 @@ app.prepare().then(async () => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
     if (shop) {
-      ctx.set(
+      ctx.res.set(
         "Content-Security-Policy",
         `frame-ancestors ${shop || ""} https://admin.shopify.com`
       );

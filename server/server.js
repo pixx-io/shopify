@@ -66,6 +66,7 @@ app.prepare().then(async () => {
   const handleRequest = async (ctx, shop = false) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
+    console.log(shop);
     if (shop) {
       ctx.res.set(
         "Content-Security-Policy",

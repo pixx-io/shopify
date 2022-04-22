@@ -66,6 +66,10 @@ app.prepare().then(async () => {
   const handleRequest = async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
+    ctx.set(
+      "Content-Security-Policy",
+      `frame-ancestors ${shop || ""} https://admin.shopify.com`
+    );
     ctx.res.statusCode = 200;
   };
 
@@ -95,7 +99,7 @@ app.prepare().then(async () => {
     if (ACTIVE_SHOPIFY_SHOPS[shop] === undefined) {
       ctx.redirect(`/auth?shop=${shop}`);
     } else {
-      await handleRequest(ctx);
+      await handleRequest(ctx, shop);
     }
   });
 

@@ -73,6 +73,7 @@ app.prepare().then(async () => {
         `frame-ancestors ${shop || ""} https://admin.shopify.com`
       );
     }
+    console.log(ctx.header);
     ctx.res.statusCode = 200;
   };
 

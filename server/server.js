@@ -68,7 +68,7 @@ app.prepare().then(async () => {
     ctx.respond = false;
     console.log(shop);
     if (shop) {
-      ctx.res.set(
+      ctx.append(
         "Content-Security-Policy",
         `frame-ancestors ${shop || ""} https://admin.shopify.com`
       );

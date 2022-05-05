@@ -22,7 +22,7 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.12.11",
     "@babel/register": "^7.12.10",
-    "@pixx.io/jsdk": "^0.3.8",
+    "@pixx.io/jsdk": "^0.4.1",
     "@shopify/app-bridge-react": "^2.0.2",
     "@shopify/app-bridge-utils": "^2.0.2",
     "@shopify/koa-shopify-auth": "^4.1.2",
@@ -38,9 +38,9 @@
     "next": "^12.0.8",
     "next-env": "^1.1.0",
     "node-fetch": "^2.6.1",
-    "react": "^16.10.1",
+    "react": "16.14",
     "react-apollo": "^3.1.3",
-    "react-dom": "^16.10.1",
+    "react-dom": "16.14",
     "webpack": "^5.66.0"
   },
   "devDependencies": {

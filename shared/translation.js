@@ -4,10 +4,12 @@ import { en } from "../i18n/en";
 const translationData = { locale: "en" };
 
 export const setLocale = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const localeSegments = urlParams.get("locale").split("-");
-  const primaryLocaleSegment = localeSegments[0];
-  translationData.locale = primaryLocaleSegment;
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const localeSegments = urlParams.get("locale").split("-");
+    const primaryLocaleSegment = localeSegments[0];
+    translationData.locale = primaryLocaleSegment;
+  } catch (e) {}
 };
 
 export const getAvailableLocale = () => {

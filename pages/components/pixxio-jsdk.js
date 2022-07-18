@@ -4,9 +4,10 @@ import * as PIXXIO from "@pixx.io/jsdk/build/pixxio.jsdk.min.js";
 import "@pixx.io/jsdk/build/pixxio.jsdk.css";
 
 const mediaConfig = {
-  allowedTypes: ["jpg", "png"],
-  allowedFormats: ["original", "preview"],
+  allowTypes: ["jpg", "png"],
+  allowFormats: ["original", "preview"],
   showFileSize: true,
+  showFileType: true,
   max: 30,
 };
 
